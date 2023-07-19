@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -ex
+
 export LIBVIRT_DEFAULT_URI="qemu+ssh://puppy@rockpro64/system"
 
 if [ -z "$1" ]; then
@@ -15,6 +17,7 @@ SRC_FILE="$2"
 
 [ -z "$SRC_FILE" ] && SRC_FILE="$DEST_VOL"
 
-size=$(stat -Lc%s "$SRC_FILE")
+#size=$(stat -Lc%s "$SRC_FILE")
+size=$(du -A -B 1 "$SRC_FILE" | awk '{ print $1 }')
 virsh vol-create-as isos "$SRC_FILE" $size --format raw
 virsh vol-upload --pool isos "$DEST_VOL" "$SRC_FILE"
