@@ -8,7 +8,7 @@ Based on <https://wiki.debian.org/KVM>:
 ```
 $ sudo apt update
 $ sudo apt upgrade
-$ sudo apt install --no-install-recommends qemu-system libvirt-daemon-system libvirt-clients qemu-efi-aarch64 dnsmasq dmidecode
+$ sudo apt install --no-install-recommends qemu-system qemu-efi-aarch64 qemu-utils libvirt-daemon-system libvirt-clients dnsmasq dmidecode
 $ sudo adduser puppy libvirt
 $ sudo virsh list --all
 ```
